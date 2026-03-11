@@ -1,0 +1,20 @@
+name: 532-gp19
+channels:
+  - conda-forge
+dependencies:
+  - scikit-learn=1.3
+  - shiny=1.4.0
+  - numpy=1.24
+  - python=3.11
+  - jupyter=1.0
+  - matplotlib=3.7
+  - pandas=2.0
+  - pip
+  
+  - pip:
+      - shinywidgets
+      - python-dotenv
+      - chatlas
+      - anthropic
+      - querychat
+      
