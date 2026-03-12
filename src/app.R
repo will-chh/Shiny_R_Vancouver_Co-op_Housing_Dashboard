@@ -2,10 +2,6 @@
 # Vancouver Non-Market Housing Dashboard - Shiny for R
 # R translation of the Python app.py
 # =========================================================
-if (file.exists(".env")) {
-  dotenv::load_dot_env(".env")
-}
-
 # ---------------------------
 # Libraries
 # ---------------------------
@@ -17,6 +13,12 @@ library(DT)
 library(jsonlite)
 library(ellmer)
 library(querychat)
+library(dotenv)
+
+# Load repo-root .env explicitly
+if (file.exists("../.env")) {
+  dotenv::load_dot_env("../.env")
+}
 
 # ---------------------------
 # Data layer
