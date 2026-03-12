@@ -14,6 +14,8 @@ library(jsonlite)
 library(ellmer)
 library(querychat)
 library(dotenv)
+library(duckdb)
+options(querychat.DataFrameSource.engine = "duckdb")
 
 # Load repo-root .env explicitly
 if (file.exists("../.env")) {
@@ -394,17 +396,26 @@ app_ui <- bslib::page_fillable(
 
           div(
             bslib::card(
-              bslib::card_header(textOutput("ai_title")),
+            bslib::card_header(textOutput("ai_title")),
 
-              DTOutput("ai_data_table"),
+            div(
+                DTOutput("ai_data_table"),
+                style = "flex: 1; min-height: 0; overflow: auto;"
+            ),
 
-              downloadButton(
-                "download_data",
-                "Download Data",
-                class = "btn btn-primary"
-              ),
+            bslib::card_footer(
+                div(
+                downloadButton(
+                    "download_data",
+                    "Download Data",
+                    class = "btn btn-primary"
+                ),
+                style = "display: flex; justify-content: flex-end;"
+                )
+            ),
 
-              full_screen = TRUE
+            full_screen = TRUE,
+            style = "height: 100%; display: flex; flex-direction: column;"
             ),
             class = "ai-results-col"
           )
